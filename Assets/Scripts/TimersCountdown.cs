@@ -11,7 +11,7 @@ public class TimersCountdown : MonoBehaviour
     public float totalLapTime;
     public float totalCountdownTime;
 
-    public CodeyMove A;
+    public CodeyMove FriedChicken;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,15 @@ public class TimersCountdown : MonoBehaviour
 
         if (totalCountdownTime > 0)
         {
-            
+            totalCountdownTime -= Time.deltaTime;
+            startCountdown.text = Mathf.Round(totalCountdownTime).ToString();
+            FriedChicken.Speed = 0f;
+        }
+
+        if (totalCountdownTime <= 0)
+        {
+            startCountdown.text = "";
+            totalLapTime -= Time.deltaTime;
         }
     }
 }
